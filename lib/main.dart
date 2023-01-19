@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Weather App',
       theme: ThemeData(
           primarySwatch: const MaterialColor(0x87CEF0,kColorCodes),
           scaffoldBackgroundColor: kClearSkyScaffoldColor),

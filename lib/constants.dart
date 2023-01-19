@@ -13,4 +13,4 @@ const Map<int, Color> kColorCodes={
   800: Color.fromRGBO(177, 227, 255, .9),
   900: Color.fromRGBO(177, 227, 255, 1),
 };
-const kClearSkyScaffoldColor=Color.fromRGBO(177, 227, 255, 1);
+const kClearSkyScaffoldColor=Color.fromRGBO(177, 227, 255, .8);

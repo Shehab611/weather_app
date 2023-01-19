@@ -14,7 +14,7 @@ final List<TodayWeatherDetailItemData> items;
                 todayWeatherDetailItemData:items[index] ),
         separatorBuilder: (context, index) =>
            const Divider(
-              color: Colors.black,
+              color: Colors.grey,
             ),
         itemCount: items.length);
   }
