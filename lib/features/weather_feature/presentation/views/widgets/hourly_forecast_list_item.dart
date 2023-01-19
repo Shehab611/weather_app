@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/styles.dart';
+import '../../../../../core/utils/styles.dart';
 
 class HourlyForecastSectionItem extends StatelessWidget {
   const HourlyForecastSectionItem({Key? key,}) : super(key: key);

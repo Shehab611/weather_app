@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/styles.dart';
+import '../../../../../core/utils/styles.dart';
+
+
 
 class DailyForecastSectionItem extends StatelessWidget {
   const DailyForecastSectionItem({Key? key,}) : super(key: key);

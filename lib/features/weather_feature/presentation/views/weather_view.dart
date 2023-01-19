@@ -15,7 +15,7 @@ class WeatherHome extends  StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         elevation: 40,
-        leading: IconButton(
+        leading:IconButton(
             icon: const Icon(Icons.search_rounded), onPressed: () {}),
         title: Row(
           children: const [
@@ -25,6 +25,7 @@ class WeatherHome extends  StatelessWidget{
             ),
           ],
         ),
+
       ),
       body: const WeatherViewBody(),
       bottomNavigationBar:const CustomizedBottomNavigationItem() ,

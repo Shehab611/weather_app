@@ -46,6 +46,12 @@ dependencies:
   dio: ^4.0.6
   cached_network_image: ^3.2.3
   font_awesome_flutter: ^10.3.0
+  video_player: ^2.4.10
+  flutter_native_splash: ^2.2.17
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/blue_clouds.jpg
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/core/styles.dart';
-
+import '../../../../../core/utils/styles.dart';
 class TodayWeatherContentData extends StatelessWidget {
   const TodayWeatherContentData({Key? key}) : super(key: key);
 
