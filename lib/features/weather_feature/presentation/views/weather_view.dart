@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../search_feature/presentation/views/search_widget.dart';
@@ -14,6 +17,21 @@ class WeatherHome extends StatefulWidget {
 }
 
 class _WeatherHomeState extends State<WeatherHome> {
+
+  List<String> searchList=[];
+  Future<void> readJson() async {
+    final response = await rootBundle.loadString('assets/json/cities.json');
+    final data = await json.decode(response);
+    for (var i in data['city']){
+      searchList.add(i);
+    }
+  }
+
+  @override
+  void initState() {
+    readJson();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +51,7 @@ class _WeatherHomeState extends State<WeatherHome> {
               onPressed: () {
                 setState(() {
                   showSearch(
-                      context: context, delegate: CustomSearchWidgetDelegate());
+                      context: context, delegate: CustomSearchWidgetDelegate(searchList:searchList ));
                 });
               }),
         ],

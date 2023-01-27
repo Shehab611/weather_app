@@ -1,16 +1,20 @@
-import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:weather_app/core/utils/app_router.dart';
+import 'package:weather_app/features/weather_feature/data/repo/weather_home_repo.dart';
+import 'package:weather_app/features/weather_feature/presentation/views/weather_view.dart';
+
+import '../../../splash_feature/presentation/views/splash_view.dart';
+import '../../data/repo/search_repo.dart';
+import '../../data/repo/search_repo_impl.dart';
 
 class CustomSearchWidgetDelegate extends SearchDelegate {
-  Future<List<String>> readJson() async {
-    final response = await rootBundle.loadString('assets/json/cities.json');
-    final data = await json.decode(response);
-    return data['city'] as List<String>;
-  }
+  final List<String> searchList;
 
-  CustomSearchWidgetDelegate()
+  CustomSearchWidgetDelegate({required this.searchList})
       : super(
           searchFieldLabel: 'Type City Name',
           keyboardType: TextInputType.text,
@@ -47,41 +51,34 @@ class CustomSearchWidgetDelegate extends SearchDelegate {
 // third overwrite to show query result
   @override
   Widget buildResults(BuildContext context) {
-    return const Center();
-    /*  List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
-      if (fruit.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(fruit);
-      }
-    }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: (context, index) {
-        var result = matchQuery[index];
-        return ListTile(
-          title: Text(result),
-        );
-      },
-    );*/
+    final SearchRepo weatherHomeRepo = SearchRepoImpl();
+    weatherHomeRepo.getSearchResult(cityName: query).then((value){
+      value.fold(
+          (l) => print(l.errMessage),
+          (r) => City(lat:r.lat, lon: r.lon));
+
+    });
+   exit(0);
+
   }
 
 // last overwrite to show the
 // querying process at the runtime
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> initData=const['Cairo','Alexandria','Tokyo','Paris'];
-    return FutureBuilder(
-      future: readJson(),initialData: initData,
-      builder: (context, snapshot) {
+    List<String> list = (query.isEmpty)
+        ? searchList
+        : searchList.where((element) => element.contains(query)).toList();
 
-        return ListView.separated(
-            itemBuilder: (context, index) => ListTile(
-                  title: Text(snapshot.data?[index]??initData[index]),
-                ),
-            separatorBuilder: (context, index) => const Divider(),
-            itemCount: snapshot.data?.length ?? 4);
-      },
-    );
-
+    return ListView.separated(
+        itemBuilder: (context, index) => ListTile(
+              title: Text(list[index]),
+              onTap: () {
+                query = list[index];
+                showResults(context);
+              },
+            ),
+        separatorBuilder: (context, index) => const Divider(),
+        itemCount: list.length);
   }
 }

@@ -14,8 +14,8 @@ abstract class WeatherHomeRepo {
 }
 
 class City extends Equatable {
-  final double lat;
-  final double lon;
+  final num lat;
+  final num lon;
 
   const City({required this.lat, required this.lon});
 
