@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:weather_app/features/weather_feature/presentation/views/widgets/bottom_navigation_item.dart';
+
+import '../../../search_feature/presentation/views/search_widget.dart';
 import 'widgets/weather_view_body.dart';
 
+class WeatherHome extends StatefulWidget {
+  const WeatherHome({
+    super.key,
+  });
 
+  @override
+  State<WeatherHome> createState() => _WeatherHomeState();
+}
 
-class WeatherHome extends  StatelessWidget{
-  const WeatherHome({super.key});
-
-
-
+class _WeatherHomeState extends State<WeatherHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 40,
-        leading:IconButton(
-            icon: const Icon(Icons.search_rounded), onPressed: () {}),
         title: Row(
           children: const [
             Icon(FontAwesomeIcons.locationArrow),
@@ -25,12 +27,19 @@ class WeatherHome extends  StatelessWidget{
             ),
           ],
         ),
-
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.search_rounded),
+              onPressed: () {
+                setState(() {
+                  showSearch(
+                      context: context, delegate: CustomSearchWidgetDelegate());
+                });
+              }),
+        ],
       ),
       body: const WeatherViewBody(),
-      bottomNavigationBar:const CustomizedBottomNavigationItem() ,
+      // bottomNavigationBar: const CustomizedBottomNavigationItem(),
     );
   }
-
-
 }

@@ -1,54 +1,59 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/features/weather_feature/presentation/view_model_manger/hourly_weather_cubit/hourly_weather_cubit.dart';
 
 import '../../../../../core/utils/styles.dart';
 
 class HourlyForecastSectionItem extends StatelessWidget {
-  const HourlyForecastSectionItem({Key? key,}) : super(key: key);
-
+  const HourlyForecastSectionItem({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<HourlyForecastItemDetail> items = const [
-      HourlyForecastItemDetail(
-          degree: '17',
-          hour: '2',
-          humidityDegree: '4',
-          iconUrl: 'http://openweathermap.org/img/wn/10d@2x.png'),
-      HourlyForecastItemDetail(
-          degree: '17',
-          hour: '2',
-          humidityDegree: '4',
-          iconUrl: 'http://openweathermap.org/img/wn/10d@2x.png'),
-      HourlyForecastItemDetail(
-          degree: '17',
-          hour: '2',
-          humidityDegree: '4',
-          iconUrl: 'http://openweathermap.org/img/wn/10d@2x.png'),
-      HourlyForecastItemDetail(
-          degree: '17',
-          hour: '2',
-          humidityDegree: '4',
-          iconUrl: 'http://openweathermap.org/img/wn/10d@2x.png'),
-    ];
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(15)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Hourly Forecast', style: Styles.textStyle25),
-            const SizedBox(
-              height: 30,
+    return BlocBuilder<HourlyWeatherCubit, HourlyWeatherState>(
+      builder: (context, state) {
+        if (state is HourlyWeatherSuccess) {
+          List<HourlyForecastItemDetail> items = List.generate(
+              state.currentWeatherModel.length,
+              (index) => HourlyForecastItemDetail(
+                  humidityDegree:
+                      state.currentWeatherModel[index].humidity.toString(),
+                  hour: state.currentWeatherModel[index].hour,
+                  degree: state.currentWeatherModel[index].temp.toString(),
+                  iconUrl: state.currentWeatherModel[index].icon));
+          return Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Hourly Forecast', style: Styles.textStyle25),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SizedBox(
+                    height: 150,
+                    child: HourlyForecastItemList(items: items),
+                  )
+                ],
+              ),
             ),
-            SizedBox(height: 200,
-              child: HourlyForecastItemList(items: items),
-            )
-          ],
-        ),
-      ),
+          );
+        } else if (state is HourlyWeatherFailure) {
+          return Center(
+            child: Text(state.errMessage),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
@@ -64,8 +69,10 @@ class HourlyForecastItemList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) =>
             HourlyForecastItem(hourlyForecastItemDetail: items[index]),
-        separatorBuilder: (context, index) => Container(width: 1,color: Colors.grey,
-        ),
+        separatorBuilder: (context, index) => Container(
+              width: 1,
+              color: Colors.grey,
+            ),
         itemCount: items.length);
   }
 }
@@ -83,8 +90,14 @@ class HourlyForecastItem extends StatelessWidget {
         const SizedBox(
           height: 15,
         ),
-        Text(hourlyForecastItemDetail.degree),
-        Image(image: NetworkImage(hourlyForecastItemDetail.iconUrl)),
+        Text('${hourlyForecastItemDetail.degree} °'),
+        CachedNetworkImage(
+          imageUrl:'http://openweathermap.org/img/wn/${hourlyForecastItemDetail.iconUrl}.png',
+          height: 70,width: 70,fit: BoxFit.fitWidth,
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
         Text('${hourlyForecastItemDetail.humidityDegree} %'),
       ],
     );

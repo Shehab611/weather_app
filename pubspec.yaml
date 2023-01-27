@@ -48,6 +48,8 @@ dependencies:
   font_awesome_flutter: ^10.3.0
   video_player: ^2.4.10
   flutter_native_splash: ^2.2.17
+  intl: ^0.18.0
+  location: ^4.4.0
 
 flutter_native_splash:
   color: "#FFFFFF"
