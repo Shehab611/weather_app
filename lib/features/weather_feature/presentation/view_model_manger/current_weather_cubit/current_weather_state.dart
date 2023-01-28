@@ -16,3 +16,5 @@ class CurrentWeatherSuccess extends CurrentWeatherState {
   final CurrentWeatherModel currentWeatherModel;
   const CurrentWeatherSuccess(this.currentWeatherModel);
 }
+
+

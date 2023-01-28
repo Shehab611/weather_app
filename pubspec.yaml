@@ -50,6 +50,7 @@ dependencies:
   flutter_native_splash: ^2.2.17
   intl: ^0.18.0
   location: ^4.4.0
+  geocoding: ^2.0.5
 
 flutter_native_splash:
   color: "#FFFFFF"

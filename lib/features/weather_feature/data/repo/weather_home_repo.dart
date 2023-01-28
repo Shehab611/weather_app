@@ -16,8 +16,9 @@ abstract class WeatherHomeRepo {
 class City extends Equatable {
   final num lat;
   final num lon;
+  final String cityName;
 
-  const City({required this.lat, required this.lon});
+  const City({required this.lat, required this.lon,required this.cityName});
 
   @override
   List<Object> get props => [lat, lon];

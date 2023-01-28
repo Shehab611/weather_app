@@ -16,5 +16,48 @@ class CurrentWeatherCubit extends Cubit<CurrentWeatherState> {
     result.fold((failure) => emit(CurrentWeatherFailure(failure.errMessage)),
             (currentWeather) => emit(CurrentWeatherSuccess(currentWeather)));
   }
-
+  String changeBackGroundImage(String weatherState) {
+    int index = 0;
+    List<String> images = [
+      'assets/images/clear_sky.jpg',
+      'assets/images/cloudy_sky.jpg',
+      'assets/gif/rain.gif',
+      'assets/images/mist.jpg','assets/images/thunderstorm.jpg','assets/images/haze.jpg'
+    ];
+    switch (weatherState.toLowerCase()) {
+      case 'clear':
+        {
+          index = 0;
+          break;
+        }
+      case 'clouds':
+        {
+          index = 1;
+          break;
+        }
+      case 'rain':
+        {
+          index = 2;
+          break;
+        }
+      case 'mist':
+        {
+          index = 3;
+          break;
+        }
+      case 'thunderstorm':{
+        index=4;
+        break;
+      }
+      case 'haze':{
+        index=5;
+        break;
+      }
+      default:
+        {
+          index = 0;
+        }
+    }
+    return images[index];
+  }
 }

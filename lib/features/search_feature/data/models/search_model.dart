@@ -12,7 +12,6 @@ class SearchResultModel extends Equatable {
   const SearchResultModel(
       {required this.name,
       required this.country,
-
       required this.lat,
       required this.lon});
 
