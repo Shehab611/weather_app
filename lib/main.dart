@@ -16,12 +16,8 @@ readJson()async{
 void main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
-  /*final SearchRepo weatherHomeRepo=SearchRepoImpl();
-    var result = await weatherHomeRepo.getSearchResult(cityName: 'cairo');
-    print(result);*/
 
   await readJson();
-
 
   initServicesLocator();
   runApp(const MyApp());
