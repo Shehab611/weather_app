@@ -15,4 +15,4 @@ const Map<int, Color> kColorCodes={
   900: Color.fromRGBO(168, 154, 145, 1),
 };
 const kClearSkyScaffoldColor=Color.fromRGBO(168, 154, 145, .8);
-const kApiKey='e4749fc95df1cf0ea6556d82e35cda42';
+const kApiKey='';
