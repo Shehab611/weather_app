@@ -4,12 +4,15 @@ A Flutter Application that displays all the weather details of a city by getting
 
 ## Technologies 
 
+Dart Programming language
 
-A few resources to get you started if this is your first Flutter project:
+Flutter Framework
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+OpenWeatherMap API handled by Dio Package
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Bloc(cubit) as State management
+
+Getting the Location of the phone by geocoding
+
+## Installation
+
