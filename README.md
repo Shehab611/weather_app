@@ -22,4 +22,5 @@ You can download the app through the link below
 https://drive.google.com/file/d/1mZ9k2ONNdY7jmR7RlFTzO9OfZINDeHSv/view?usp=drive_link
 
 ## Photos
-![WhatsApp Image 2023-07-07 at 23 31 00](https://github.com/Shehab611/weather_app/assets/77563526/068fdab9-96cb-4b0d-b8fa-bce934ee2556)
+![WhatsApp Image 2023-07-07 at 23 31 00](https://github.com/Shehab611/weather_app/assets/77563526/068fdab9-96cb-4b0d-b8fa-bce934ee2556)    ![WhatsApp Image 2023-07-07 at 23 31 01](https://github.com/Shehab611/weather_app/assets/77563526/77ae0f0c-2d42-40a1-aa2e-d41efd790c79)
+
