@@ -1,10 +1,9 @@
-# weather_app
+# Weather App
 
-A new Flutter project.
+A Flutter Application that displays all the weather details of a city by getting the location of the mobile
 
-## Getting Started
+## Technologies 
 
-This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
