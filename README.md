@@ -21,7 +21,8 @@ Getting city name and county name by geocoding package
 ## Installation
 
 You can download the app through the link below
-https://drive.google.com/file/d/1mZ9k2ONNdY7jmR7RlFTzO9OfZINDeHSv/view?usp=drive_link
+
+https://drive.google.com/file/d/1EeMSPee3RAEAARu_yurXf4yhcMNdQD9y/view?usp=sharing
 
 ## Photos
 
