@@ -12,6 +12,8 @@ OpenWeatherMap API handled by Dio Package
 
 Bloc(cubit) as State management
 
+MVVM Architecture
+
 Getting the Location of the phone by location package
 
 Getting city name and county name by geocoding package
